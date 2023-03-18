@@ -118,6 +118,10 @@ function formatViews(num: number) {
     overflow: hidden;
 
   }
+  
+  a {
+    text-decoration: none;
+  }
 
   .url {
     font-weight: 300;

@@ -31,8 +31,10 @@
             <a href={url} target="_blank" download>
                 <div class="list-item">
                     <span class="item-info">{width} x {height} ({video_format}, {fps}fps)</span>
-                    <span class="item-size">{bytesToMegabytes(contentLength)}mb</span>
-                    <img src="/download_button.svg" alt="This is the download button">
+                    <div class="item-info-wrapper">
+                        <span class="item-size">{contentLength ? bytesToMegabytes(contentLength) : "(?)"}mb</span>
+                        <img src="/download_button.svg" alt="This is the download button">
+                    </div>
                 </div>
             </a>
         { /each }
@@ -65,6 +67,12 @@
         border-bottom: .5px solid #858585;
     }
 
+    .item-info-wrapper {
+        display: flex;
+        justify-content: space-around;
+        gap: 5rem;
+    }
+
     @media (max-width: 600px) {
         .list-item {
             padding: 1rem 1rem;
@@ -73,6 +81,10 @@
 
         .item-info {
             font-weight: 300;
+        }
+
+        .item-info-wrapper {
+            gap: 2rem;
         }
     }
 

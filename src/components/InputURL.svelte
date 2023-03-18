@@ -1,5 +1,6 @@
 <script lang="ts">
     import { VideoInfo } from "../stores/VideoInfo.store";
+    import { fetchStatus } from "../stores/fetchStatus.store";
 
     let input_value  = ""
 
@@ -19,7 +20,14 @@
     }
 
     async function storeYoutubeInfo() {
-        VideoInfo.set(await fetchYoutubeInfo())
+        fetchStatus.set("loading")
+        try{
+            VideoInfo.set(await fetchYoutubeInfo())
+        } 
+        catch (err) {
+            fetchStatus.set("failed")
+        }
+        fetchStatus.set("success")
     }
 
 </script>
