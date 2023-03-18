@@ -22,7 +22,7 @@
 
     <div class="audio-list-items">
         { #each audios as {url, audio_format, contentLength} }
-            <a href={url} target="_blank">
+            <a href={url} target="_blank" download>
                 <div class="list-item">
                     <span class="item-info">{audio_format}</span>
                     <span class="item-size">{bytesToMegabytes(contentLength)}mb</span>

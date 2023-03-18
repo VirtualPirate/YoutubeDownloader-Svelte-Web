@@ -63,7 +63,9 @@ function formatViews(num: number) {
         <img class="thumbnail" src={info.thumbnails[3].url} alt=""/>
         <div class="video-info">
             <div class="title">{info.title}</div>
-            <div class="url">{info.videoUrl}</div>
+            <a href={info.videoUrl}>
+              <div class="url">{info.videoUrl}</div>
+            </a>
             <div class="micro-details">
               <div>{info.channelName}</div>
               <div>{formatViews(parseInt(info.viewCount))}</div>

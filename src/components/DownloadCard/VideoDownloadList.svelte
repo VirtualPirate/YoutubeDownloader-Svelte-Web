@@ -28,7 +28,7 @@
 
     <div class="video-list-items">
         { #each videoWithAudio as {height, width, fps, video_format, contentLength, url } }
-            <a href={url} target="_blank">
+            <a href={url} target="_blank" download>
                 <div class="list-item">
                     <span class="item-info">{width} x {height} ({video_format}, {fps}fps)</span>
                     <span class="item-size">{bytesToMegabytes(contentLength)}mb</span>
