@@ -29,7 +29,8 @@
     <YoutubeVideoCard info={videoStoreValue} />
   {:else if fetchStatus_ === "failed"}
   <h2 style="text-align: center;"> REQUEST FAILED, PLEASE TRY AGAIN </h2>
-
+  {:else}
+  <h2 style="text-align: center;"> ENTER A YOUTUBE LINK </h2>
   {/if}
 </main>
 

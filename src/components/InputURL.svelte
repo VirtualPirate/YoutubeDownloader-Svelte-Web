@@ -13,21 +13,27 @@
 
     async function fetchYoutubeInfo() {
         const id = getYoutubeVideoId(input_value)
-        const data = await fetch(`https://youtube-download.cyclic.app/youtube-video/${id}`)
+        if(id){
+            const data = await fetch(`https://youtube-download.cyclic.app/youtube-video/${id}`)
                         .then(response => response.json())
+                        
 
-        return data
+            return data
+        }
+
+        return null;
     }
 
     async function storeYoutubeInfo() {
         fetchStatus.set("loading")
-        try{
+        const data = await fetchYoutubeInfo()
+        if(data){
             VideoInfo.set(await fetchYoutubeInfo())
-        } 
-        catch (err) {
+            fetchStatus.set("success")
+        } else {
             fetchStatus.set("failed")
         }
-        fetchStatus.set("success")
+        
     }
 
 </script>
