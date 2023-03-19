@@ -14,7 +14,7 @@
     async function fetchYoutubeInfo() {
         const id = getYoutubeVideoId(input_value)
         if(id){
-            const data = await fetch(`https://youtube-download.cyclic.app/youtube-video/${id}`)
+            const data = await fetch(`http://localhost:3000/youtube-video/${id}`)
                         .then(response => response.json())
                         
 
@@ -28,7 +28,7 @@
         fetchStatus.set("loading")
         const data = await fetchYoutubeInfo()
         if(data){
-            VideoInfo.set(await fetchYoutubeInfo())
+            VideoInfo.set(data)
             fetchStatus.set("success")
         } else {
             fetchStatus.set("failed")
