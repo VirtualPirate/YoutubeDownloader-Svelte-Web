@@ -4,21 +4,15 @@
 
     let input_value  = ""
 
-    function getYoutubeVideoId(link: string) {
-        const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
-        const match = link.match(regExp);
-        return (match&&match[7].length==11)? match[7] : false;
-
-    }
-
     async function fetchYoutubeInfo() {
-        const id = getYoutubeVideoId(input_value)
-        if(id){
-            const data = await fetch(`http://localhost:3000/youtube-video/${id}`)
+        if(input_value){
+            const data = await fetch(`https://youtube-download.cyclic.app/youtube-video/?`
+                        + new URLSearchParams({url: input_value}))
                         .then(response => response.json())
                         
-
-            return data
+            if(data.status === "SUCCESS"){
+                return data
+            }
         }
 
         return null;
