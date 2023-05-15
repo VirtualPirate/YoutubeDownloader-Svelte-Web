@@ -22,7 +22,7 @@
         fetchStatus.set("loading")
         const data = await fetchYoutubeInfo()
         if(data){
-            VideoInfo.set(data)
+            VideoInfo.set(data.response)
             fetchStatus.set("success")
         } else {
             fetchStatus.set("failed")
